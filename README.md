@@ -1,26 +1,27 @@
-# Sample Java App - Spring Boot Server
-
-[![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/sample-java-cfd.svg?style=shield)](https://circleci.com/gh/CircleCI-Public/sample-java-cfd) [![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CircleCI-Public/sample-java-cfd/main/LICENSE)
+# Sample Java App - Spring Boot Server - DevSecOps Demonstration
 
 ## Description
 
-This sample java spring boot app here is designed to demonstrate what a typical java CI workflow may look on CircleCI.
+This sample java spring boot app here is designed to demonstrate what a typical java CI workflow may look. We will focus on devSecOps practices and implement it in this repository.
 
-You can see the CI pipelines for this application running [live on CircleCI](https://app.circleci.com/pipelines/github/CircleCI-Public/sample-java-cfd?branch=main).
+## Stuff to implement
+
+1. Badge that passes the build pipeline
+2. Signing of commits
+3. Image scanning
+4. Scanning of the repository
+5. Generating the SBOM
+6. Implementing DAST & IAST
+7. Signing of the artifacts
+8. Scanning of the artifacts
+   1. Terraform code
+   2. Ansible playbooks
+   3. Helm templates
+   4. Kubernetes manifests
+
+## Old CircleCI pipeline
 
 In this sample config, we have a single workflow `verify` which will install and cache our required java libraries, and then run the `mvn verify` command. This config makes use of the [Maven orb](https://circleci.com/developer/orbs/orb/circleci/maven) and [Postgres orb](https://circleci.com/developer/orbs/orb/circleci/postgres), packages for CircleCI's config language, which makes writing our config shorter, and easier.
-
-## Getting Started
-
-If you would like to copy the [config.yml](https://github.com/CircleCI-public/sample-python-cfd/blob/main/.circleci/config.yml) and adapt it to your project, be sure to read the comments in the config file to ensure it works for your project. For more details, see the [CircleCI configuration reference](https://circleci.com/docs/2.0/configuration-reference/).~~~~
-
-## Addtional Sample Configuration Files
-
-Inside the `.circleci` directory, you will find an `extended` directory that extends the configuration beyond the default `.circleci/config.yml`. These configuration files are tested with every pull request to this sample app, so they stay up to date and verified working.
-
-### Heroku Deploy
-
-The `.circleci/extended/heroku-deploy.yml` configuration file extends the default config by adding a job to deploy to heroku via a git push. For more information on how to configure this for your own project, visit the [CircleCI docs](https://circleci.com/docs/2.0/deployment-integrations/#a-simple-example-using-heroku) for more details
 
 ## About This App
 
@@ -58,7 +59,7 @@ docker-compose up --build
 
 If not using docker, to run the server, please execute the following from the root directory:
 
-```
+```sh
 ./mvnw package
 java -jar target/sample-java-cfd-0.0.1-SNAPSHOT.jar
 ```
@@ -67,18 +68,13 @@ java -jar target/sample-java-cfd-0.0.1-SNAPSHOT.jar
 
 To launch the unit tests, use pytest:
 
-```
+```sh
 ./mvnw test
 ```
 
 ## Additional Resources
 
-* [CircleCI Docs](https://circleci.com/docs/) - The official CircleCI Documentation website.
-* [CircleCI Configuration Reference](https://circleci.com/docs/2.0/configuration-reference/#section=configuration) - From CircleCI Docs, the configuration reference page is one of the most useful pages we have.
-
-
 ## License
 
 This repository is licensed under the MIT license.
 The license can be found [here](./LICENSE).
-
