@@ -1,0 +1,26 @@
+name: Generating the SBOM file
+
+on:
+  workflow_dispatch:
+
+## GITHUB_TOKEN authentication
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Generating the SBOM file
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Trivy in GitHub SBOM mode and submit results to Dependency Graph
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          format: 'github'
+          output: 'dependency-results.sbom.json'
+          image-ref: '.'
+          github-pat: ${{ secrets.GITHUB_TOKEN }}
