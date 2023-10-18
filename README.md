@@ -8,9 +8,9 @@ This sample java spring boot app here is designed to demonstrate what a typical 
 
 ## DevSecOps to implement
 
-1. Signing of commits
-2. Implementing DAST & IAST
-3. Signing of the artifacts
+1. Implementing DAST & IAST
+2. Signing of the artifacts
+3. Create some artifacts
 4. Scanning of the artifacts
    1. Terraform code
    2. Ansible playbooks
@@ -19,11 +19,12 @@ This sample java spring boot app here is designed to demonstrate what a typical 
 
 ## DevSecOps implemented
 
-1. Image scanning for vulnerabilities (once a day) using Trivy
+1. Build using Maven then build & push docker image to Docker Hub
+2. Image scanning for vulnerabilities (once a day) using Trivy
    1. The pipeline will fail if there are any HIGH & CRITICAL vulnerabilities
-2. Scanning of the repository using Trivy and placing the issued into the Security tab
-3. Generation of the SBOM using Trivy and sending it to the Dependency Graph
-4. Badge that passes the build pipeline
+3. Scanning of the repository using Trivy and placing the issued into the Security tab
+4. Generation of the SBOM using Trivy and sending it to the Dependency Graph
+5. Badge that passes the build pipeline
    1. The URL that has to be added will have the following format:
 
         ```sh
@@ -31,42 +32,13 @@ This sample java spring boot app here is designed to demonstrate what a typical 
         ```
 
    2. More information can be found [here](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge)
+6. Signing commits using GPG key
+   1. Follow [this guide](https://gist.github.com/troyfontaine/18c9146295168ee9ca2b30c00bd1b41e) to set up the signing of commits
+7. 
 
 ## Deep-dive into the implemented topics
 
-### Signing commits
 
-1. First create a gpg key.
-
-    ```sh
-    gpg --full-generate-key
-    ```
-
-2. List the keys.
-
-    ```sh
-    gpg --list-secret-keys --keyid-format=long
-    ```
-
-3. From the list of GPG keys, copy the long form of the GPG key ID you'd like to use. In this case, it is `3AA5C34371567BD2`.
-
-    ```sh
-    $ gpg --list-secret-keys --keyid-format=long
-    /Users/hubot/.gnupg/secring.gpg
-    ------------------------------------
-    sec   4096R/3AA5C34371567BD2 2016-03-10 [expires: 2017-03-10]
-    uid                          Hubot <hubot@example.com>
-    ssb   4096R/4BB6D45482678BE3 2016-03-10
-    ```
-
-4. Paste the text below, substituting in the GPG key ID you'd like to use.
-
-    ```sh
-    gpg --armor --export 3AA5C34371567BD2
-    ```
-
-5. Copy your GPG key, beginning with `-----BEGIN PGP PUBLIC KEY BLOCK-----` and ending with `-----END PGP PUBLIC KEY BLOCK-----`.
-6. Add the GPG key to your Github account.
 
 ## Old CircleCI pipeline
 
