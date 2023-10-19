@@ -2,9 +2,9 @@ name: Docker Image Scan
 
 on:
   workflow_dispatch:
-  schedule:
-    # Runs every day at midnight
-    - cron: '0 0 * * *' 
+  # schedule:
+  #   # Runs every day at midnight
+  #   - cron: '0 0 * * *' 
 
 jobs:
   image-scan:
