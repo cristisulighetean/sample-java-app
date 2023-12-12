@@ -9,8 +9,11 @@ This sample java spring boot app here is designed to demonstrate what a typical 
 ## DevSecOps to implement
 
 1. Implementing DAST & IAST
-2. Signing of the artifacts
-3. Create some artifacts
+2. Creating artifacts to deploy front-end and back-end
+   1. Kubernetes
+   2. Terraform
+   3. Ansible automation
+3. Signing of the artifacts
 4. Scanning of the artifacts
    1. Terraform code
    2. Ansible playbooks
@@ -20,7 +23,7 @@ This sample java spring boot app here is designed to demonstrate what a typical 
 ## DevSecOps implemented
 
 1. Build using Maven then build & push docker image to Docker Hub
-2. Image scanning for vulnerabilities (once a day) using Trivy
+2. Image scanning for vulnerabilities using Trivy
    1. The pipeline will fail if there are any HIGH & CRITICAL vulnerabilities
 3. Scanning of the repository using Trivy and placing the issued into the Security tab
 4. Generation of the SBOM using Trivy and sending it to the Dependency Graph
@@ -38,7 +41,7 @@ This sample java spring boot app here is designed to demonstrate what a typical 
 
 ## Deep-dive into the implemented topics
 
-
+TODO
 
 ## Old CircleCI pipeline
 
@@ -46,7 +49,7 @@ In this sample config, we have a single workflow `verify` which will install and
 
 ## About This App
 
-This sample application is a spring boot~~~~ REST server written in java, and utilizes the connexion framework which allows us build and run the service from an [OpenAPI/Swagger specification](https://swagger.io/specification/).
+This sample application is a spring boot ~~ REST server written in java, and utilizes the connexion framework which allows us build and run the service from an [OpenAPI/Swagger specification](https://swagger.io/specification/).
 
 ### Continuous Food Delivery
 
@@ -68,7 +71,7 @@ If you would like to try this application out locally, you can find runtime inst
 
 ### Requirements
 
-Java 11~~~~+ OR Docker
+Java 11 ~~ + OR Docker
 
 ### Run Local Server
 
